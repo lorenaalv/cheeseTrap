@@ -48,3 +48,12 @@ You can also embed plots, for example:
 
 In that case, don’t forget to commit and push the resulting figure
 files, so they display on GitHub and CRAN.
+
+REQUIREMENTS FOR PROJECT 2!
+
+Answers the questions: \* Why should I use this package? \* How do I
+access the package? \* How do I use the package?
+
+- README should include 1-2 examples of package/function usage. MORE
+  extended examples should be placed in the vignette.
+- 400-800 WORDS IN LENGTH!
