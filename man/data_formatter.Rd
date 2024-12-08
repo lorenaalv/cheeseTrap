@@ -2,13 +2,21 @@
 % Please edit documentation in R/data_formatter.R
 \name{data_formatter}
 \alias{data_formatter}
-\title{Data Formatter}
+\title{Data Formatter Function}
 \usage{
 data_formatter(data, x)
 }
 \arguments{
+\item{data}{ADD YOUR PARAMETERS HERE AND WHAT THEY SHOULD BE (requirements, data types, etc.)}
+
 \item{x}{}
 }
+\value{
+ADD DESCRIPTION FOR WHAT YOUR FUNCTION RETURNS (what it is, data type, etc.)
+}
 \description{
-Data Formatter
+Data Formatter Function
+}
+\examples{
+ADD EXAMPLES OF HOW TO APPLY YOUR FUNCTION
 }

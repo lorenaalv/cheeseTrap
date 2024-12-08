@@ -10,10 +10,11 @@ License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
 Imports: 
-    dplyr
+    dplyr,
+    readxl
 RoxygenNote: 7.3.2
 Depends: 
-    R (>= 2.10)
+    R (>= 3.5)
 Authors@R: c(
     person("Lorena", "Alvarez", , "lorenaalvarez@college.harvard.edu", role = "cre"),
     person("Vanessa", "Valverde", , "vanessa_valverde@college.harvard.edu", role = "cre"),

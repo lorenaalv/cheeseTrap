@@ -2,13 +2,21 @@
 % Please edit documentation in R/typo_flagger.R
 \name{typo_flagger}
 \alias{typo_flagger}
-\title{Typo Flagger}
+\title{Typo Flagger Function}
 \usage{
 typo_flagger(data, x)
 }
 \arguments{
+\item{data}{ADD YOUR PARAMETERS HERE AND WHAT THEY SHOULD BE (requirements, data types, etc.)}
+
 \item{x}{}
 }
+\value{
+ADD DESCRIPTION FOR WHAT YOUR FUNCTION RETURNS (what it is, data type, etc.)
+}
 \description{
-Typo Flagger
+Typo Flagger Function
+}
+\examples{
+ADD EXAMPLES OF HOW TO APPLY YOUR FUNCTION
 }
