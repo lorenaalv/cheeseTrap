@@ -71,24 +71,24 @@ This data was obtained by Vanessa Valverde from a survey to determine if someone
 
 In the context of mouse data, it is often common for the sex of a mouse to be incorrectly identified at the birth timepoint and then correctly identified at a later timepoint, after the mouse matures. Using join_comparison() will identify the change in sex of a particular mouse, given that the sex is identified within the ID variable.
 
-```{r}
+```{r eval=FALSE}
 join_comparison(df1 = birth, df2 = body_weight, join_by = "ID")
 ```
 In the context of mouse data, the researcher might mistype a character when inputting data for a numeric mouse body weight. To flag such issues, data_formatter() can be used to output a table of the rows where non-numeric data is found.
 
-```{r}
+```{r eval=FALSE}
 data_formatter(body_weight, c("Body_Weight_1", "Body_Weight_2", "Body_Weight_3"))
 ```
 
 In the context of mouse data, if a mice is particularly large or small, this could indicate to scientists that they should check on this mouse to ensure that it has proper cage functioning and to consider possibly excluding this mouse from the data analysis. To detect such outliers, outlier_detector() can be applied.
 
-```{r}
+```{r eval=FALSE}
 outlier_detector(data=body_weight, y_var="Body_Weight_1")
 ```
 
 In the context of mouse data, typo_flagger() may be effectively used on a column describing if the mouse received "Tmt" or "Plac". Any spelling errors or additional descriptors added by another team researcher would be flagged.
 
-```{r}
+```{r eval=FALSE}
 typo_flagger(data = birth, column = "Treatment", correct_inputs = c("Plac", "Tmt"))
 
 ```
