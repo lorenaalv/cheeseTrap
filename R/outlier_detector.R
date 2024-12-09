@@ -20,6 +20,11 @@ outlier_detector <- function(data, y_var) {
   # converting to ensure columns are numeric
   data[[y_var]] <- as.numeric(data[[y_var]])
 
+  if (sum(is.na(data[[y_var]])) > 0) {
+    cat("Warning: One or more of the rows in the specified column contains a character.\n",
+        "outlier_detector will drop this row as an NA and continue calculating outliers.\n\n")
+  }
+
   # dropping any rows that were not numeric (this is another issue, should be handled differently)
   data <- dplyr::filter(data, !is.na(data[[y_var]]))
 
@@ -30,16 +35,6 @@ outlier_detector <- function(data, y_var) {
   # outliers are +- 2.5 std from mean
   outliers <- data[abs(data[[y_var]] - mean_y) >= 2.5 * std_y, ]
 
-  if (nrow(outliers) == 0) {
-    cat("There are no outliers found in the column data. Outliers were calculated as any values being 2.5 standard deviations away from the mean.\n",
-        "To confirm, review the following scatterplot and table.\n")
-  } else {
-    cat("Your inputted column is suspected of containing outliers.\n",
-        "Outliers were calculated as any values being 2.5 standard deviations away from the mean.\n",
-        "The suspected outliers and their corresponding Row_Number are printed in the following table.\n",
-        "Revise the scatterplot to confirm if these data are outliers.\n")
-  }
-
   # scatterplot
   scatterplot <- ggplot2::ggplot(data, ggplot2::aes(Row_Number, y = .data[[y_var]])) +
     ggplot2::geom_point() +
@@ -48,21 +43,36 @@ outlier_detector <- function(data, y_var) {
 
   interactive_plot <- plotly::ggplotly(scatterplot)
 
-  # outlier table using gt
-  outlier_table <- outliers |>
-    dplyr::select(Row_Number, !!y_var := .data[[y_var]]) |>
-    gt::gt() |>
-    gt::tab_header(
-      title = "Outlier Detection Results"
-    ) |>
-    gt::tab_spanner(
-      label = "Outliers",
-      columns = c(Row_Number, !!y_var)
-    ) |>
-    gt::cols_label(
-      Row_Number = "Row_Number",
-      !!y_var := y_var
-    )
-  print(interactive_plot)
-  print(outlier_table)
+  if (nrow(outliers) > 0) {
+    # outlier table using gt
+    outlier_table <- outliers |>
+      dplyr::select(Row_Number, !!y_var := .data[[y_var]]) |>
+      gt::gt() |>
+      gt::tab_header(
+        title = "Outlier Detection Results"
+      ) |>
+      gt::tab_spanner(
+        label = "Outliers",
+        columns = c(Row_Number, !!y_var)
+      ) |>
+      gt::cols_label(
+        Row_Number = "Row_Number",
+        !!y_var := y_var
+      )
+
+    cat("Your inputted column is suspected of containing outliers.\n",
+        "Outliers were calculated as any values being 2.5 standard deviations away from the mean.\n",
+        "The suspected outliers and their corresponding Row_Number are printed in the following table.\n",
+        "Additionally review the scatterplot for confirmation.\n")
+
+    print(interactive_plot)
+    print(outlier_table)
+
+  } else {
+    cat("There are no outliers found in the column data.\n",
+        "Outliers were calculated as any values being 2.5 standard deviations away from the mean.\n",
+        "Review the scatterplot for confirmation.\n")
+
+    print(interactive_plot)
+  }
 }

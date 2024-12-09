@@ -18,16 +18,16 @@ join_comparison <- function(df1, df2, join_by) {
   rows_inner_join <- nrow(inner_join)
 
   if (rows_df1 == rows_inner_join) {
-    print(paste("Both data frames have the same number of rows."))
+    cat("Both data frames have the same number of rows.")
   } else {
-    print(paste("The number of rows is different: df1 =", rows_df1, "and inner_join =", rows_inner_join))
-    print(paste("Revise if any IDs were incorrectly modified and/or mispelled between 'df1' and 'df2'."))
+    cat("The number of rows is different: df1 =", rows_df1, "and inner_join =", rows_inner_join, "\n",
+        "Revise if any IDs were incorrectly modified and/or mispelled between 'df1' and 'df2'.")
   }
 
   excluded_df1 <- dplyr::anti_join(df1, df2, by = join_by)
 
   # Print excluded rows
-  print(paste("Rows from 'df1' not included in the inner join by", join_by, " are printed in the following table:"))
+  cat("Rows from 'df1' not included in the inner join by", join_by, " are printed in the following table:")
 
   excluded_df1 <- dplyr::mutate(excluded_df1, characteristic = dplyr::row_number())
 

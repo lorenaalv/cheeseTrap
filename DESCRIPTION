@@ -1,17 +1,19 @@
 Package: cheeseTrap
 Type: Package
-Title: What the Package Does (Title Case)
+Title: cheeseTrap
 Version: 0.1.0
 Author: Lorena Alvarez, Vanessa Valverde, Sarah Rojas
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Maintainer: Lorena Alvarez <lorenaalvarez@college.harvard.edu> Vanessa Valverde <vanessa_valverde@college.harvard.edu> Sarah Rojas <sarahrojas@college.harvard.edu>
+Description:
+    cheeseTrap effectively flags potential data issues within labs' documentation of scientific experiments that include multiple variables describing a model organism.
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
 Imports: 
     dplyr,
-    readxl
+    ggplot2,
+    gt,
+    plotly
 RoxygenNote: 7.3.2
 Depends: 
     R (>= 3.5)

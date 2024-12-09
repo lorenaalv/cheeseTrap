@@ -1,12 +1,11 @@
-# birth sheet
+# birth data sheet
 birth <- read.csv("./data-raw/Birth.csv")
 usethis::use_data(birth, overwrite = TRUE)
 
-# body weight sheet
+# body weight data sheet
 body_weight <- read.csv("./data-raw/Body_Weight.csv")
 
 # wrangling
-
 
 # renaming columns for better use
 colnames(body_weight)[2] <- "Body_Weight_1"
@@ -24,7 +23,7 @@ body_weight <- body_weight |>
 
 usethis::use_data(body_weight, overwrite = TRUE)
 
-# outcome sheet
+# outcome data sheet
 outcome <- read.csv("./data-raw/Outcome.csv")
 
 # wrangling
@@ -43,3 +42,6 @@ outcome <- outcome |>
   dplyr::select(Subject_ID, Outcome_1, Date_Outcome_1, Outcome_2, Date_Outcome_2, Outcome_3, Date_Outcome_3)
 
 usethis::use_data(outcome, overwrite = TRUE)
+
+# social dominance data set
+social_dominance <- read.csv("./data-raw/Reseachwords.csv")

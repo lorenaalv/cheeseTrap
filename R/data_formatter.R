@@ -41,5 +41,4 @@ data_formatter <- function(data, columns_to_check) {
   } else {
     print("No non-numeric values found in the specified columns!")
   }
-  return(problematic_rows)
 }
