@@ -1,0 +1,214 @@
+---
+title: "CheeseTrap Package"
+author: "Authors: Vanessa Valverde, Lorena Alvarez, Sarah Rojas"
+output:
+  rmarkdown::html_vignette:
+    toc: true
+    toc_depth: 6
+vignette: >
+  %\VignetteIndexEntry{CheeseTrap Package}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+<style>
+#toc-container {
+  display: flex; /* Using flexbox for layout */
+  justify-content: flex-end; /* Align content to the right */
+  padding: 20px; /* Optional padding to give some spacing from the edges */
+  position: relative; /* To ensure proper positioning of the TOC */
+  max-width: 300px; /* Optional: Set a max width for the TOC container */
+}
+
+#toc {
+  background: linear-gradient(135deg, ##6BC7DE, #6BC7DE );
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  padding: 15px; /* More padding for a comfortable look */
+  border-radius: 8px; /* Rounded corners */
+  border: 1px solid #ddd; /* Subtle border */
+  outline: 2px solid rgba(0, 0, 0, 0.1);
+  outline-offset: 10px;
+  font-family: 'Open Sans', sans-serif; /* Clean font for the TOC */
+  font-size: 16px; /* Slightly larger font size */
+  color: #6BC7DE ;
+  animation: fadeIn 1s ease-in-out; /* Fade-in effect for a smoother appearance */
+  max-width: 250px; /* Optional: Limit the width of the TOC itself */
+}
+
+#toc ul li {
+  padding: 5px 0;
+}
+
+#toc a {
+  text-decoration: none;
+  color: #007bff;
+  transition: color 0.3s ease, padding-left 0.3s ease; /* Smooth transition */
+}
+
+#toc a:hover {
+  text-decoration: underline;
+  color: #0056b3; /* Darker shade for a more elegant hover effect */
+  padding-left: 10px; /* Add a little spacing on hover for effect */
+}
+
+/* Optional fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+h1 {
+  color: #E43D44;
+  border-bottom: 3px solid #ddd;
+}
+
+h2 {
+  color: #ED5842;
+  border-bottom: 3px solid #ddd;
+}
+
+h3 {
+  color: #EA5A1D;
+  border-bottom: 3px solid #ddd;
+}
+
+</style>
+
+
+
+```{r setup, include = FALSE}
+# Setup chunk to load libraries and set global options
+knitr::opts_chunk$set(echo = TRUE)
+library(gt)
+library(dplyr)
+```
+
+
+```{r, echo=FALSE, out.width="50%", fig.align="center"}
+knitr::include_graphics("~/cheeseTrap/hexSticker/hexSticker.png")  
+```
+
+
+# Welcome to CheeseTrap 🧀
+
+In our package called "cheeseTrap" we created functions to acknowldge some typical user input errors. 
+
+
+## Key Features of the Package
+1. **Data Formatter Function**
+2. **Join Comparison Function**
+3. **Outlier Detector Function**
+4. **Typo Flagger Function**
+5. **Set Range Function**
+
+## Installation
+
+To install and access the CheeseTrap package, use the following code:
+
+
+```{r}
+###install.packages("cheeseTrap")
+library(cheeseTrap)
+```
+
+Additional libraries:
+
+```{r}
+library(gt)
+library(dplyr)
+```
+
+Example dataframe:
+
+```{r}
+# Create the fake dataset
+Body_WeightDF <- data.frame(
+  "Body_Weight_1" = c(25.2, 30.4, "abc", 28.5),
+  "Body_Weight_2" = c(23.4, 29.7, 27.8, 28.1),
+  "Body_Weight_3" = c(24.6, "xyz", 26.5, 28.4)
+)
+
+# Check the structure
+str(Body_WeightDF)
+
+```
+### 1) Data Formatter Function
+
+#### Purpose: 
+The purpose for the Data Formatter Function is to check briefly any column in an dataframe to see if there are any values that contain characters and present the user with a message and table displaying the non-numeric observations
+
+#### Example:
+Here are the inner-working of the function we created: data_formatter()
+
+```{r}
+data_formatter <- function(data, columns_to_check) {
+  # Step 1: Check if the specified columns exist in the dataframe
+  if (!all(columns_to_check %in% names(data))) {
+    stop("Some specified columns do not exist in the dataframe.")
+  }
+
+  # Step 2: Identify non-numeric values in the specified columns
+  non_numeric_mask <- sapply(data[, columns_to_check, drop = FALSE],
+                             function(columns_to_check) {
+                               !suppressWarnings(!is.na(as.numeric(columns_to_check)))
+                             })
+
+  # Step 3: Filter rows with non-numeric values
+  problematic_rows <- data[rowSums(non_numeric_mask) > 0, ]
+
+  # Step 4: Display rows with non-numeric values (if any)
+  if (nrow(problematic_rows) > 0) {
+    print("There are some columns identified with rows containing potential non-numeric values:")
+
+    # Create a simple gt table for the problematic rows
+    gt_table <- problematic_rows |>
+      dplyr::mutate(characteristic = dplyr::row_number()) |>
+      gt::gt(rowname_col = "characteristic") |>
+      gt::tab_header(title = "Rows Containing Non-Numeric Values")
+
+    # Print the gt table
+    print(gt_table)
+  } else {
+    print("No non-numeric values found in the specified columns!")
+  }
+}
+
+```
+
+Here is an example 
+
+```{r, results='asis'}
+# Example
+data_formatter(Body_WeightDF, c("Body_Weight_1", "Body_Weight_2", "Body_Weight_3"))
+```
+
+
+### 2) Join Comparison Function
+#### Purpose:
+Although there is not a visual example of this function here is a brief description:
+the join comparison function allows the user to compare 2 tables and see which do not have a match in order to detect any potential misspellings or in our case the wrong input of a Sex identification of a mouse.
+
+
+### 3) Outlier Detector Function
+
+#### Purpose: 
+Although there is not a visual example of this function here is a brief description:
+The outlier detection function will identify outliers in the data. It takes in arguments for a data frame and a numerical column to check for potential outliers. Then, outlier_detector() will output a table of the flagged outliers, as well as a scatterplot of the data, giving users the freedom to explore solutions. It will also output a message of the general rule to calculate outliers.
+
+### 4) Typo Flagger Function
+
+#### Purpose:
+Although there is not a visual example of this function here is a brief description:
+This is a simple spelling check function. It allows the user to input what the correct spelling of inputs is, therefore it will scan the column and output any observations that do not meet the spelling criteria.
+
+### 5) Set Range Function
+
+#### Purpose:
+Although there is not a visual example of this function here is a brief description:
+This function was created inspired by the group's unique data frame portion of the project. Because there are many questions in this survey that allowed for a free response, errors were frequent. One in particular was a question of how many days participants worked out, which was accidentally interpreted as how often participants worked out. This led to some responses exceeding the 7 maximum response (7 days in a week). This function allows the user to select a data frame, column, and max and min range. Then, it will print a message and table displaying which observations are outside of the specified range. 
+
+---
