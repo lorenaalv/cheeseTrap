@@ -93,7 +93,7 @@ typo_flagger(data = birth, column = "Treatment", correct_inputs = c("Plac", "Tmt
 
 set_range() looks within a survey called “social_dominance” and looks within the Q2 column, where respondents were asked how many days out of 7 days they worked out.  Non-numeric values would first be excluded and then you would be able to set the desired range of response — for example, if you want to look at people who worked out between 1-4 days per week. 
 
-```{r}
+```{r eval=FALSE}
 set_range(data = social_dominance, column_name = "Q2", min_value = 1, max_value = 4)
 ```
 
