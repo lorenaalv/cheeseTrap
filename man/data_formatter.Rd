@@ -4,19 +4,19 @@
 \alias{data_formatter}
 \title{Data Formatter Function}
 \usage{
-data_formatter(data, x)
+data_formatter(data, columns_to_check)
 }
 \arguments{
-\item{data}{ADD YOUR PARAMETERS HERE AND WHAT THEY SHOULD BE (requirements, data types, etc.)}
+\item{data}{the dataset for the function to act on}
 
-\item{x}{}
+\item{columns_to_check}{the variable/column for the function to act on. the name requiring inspection.}
 }
 \value{
-ADD DESCRIPTION FOR WHAT YOUR FUNCTION RETURNS (what it is, data type, etc.)
+a gt() table that outputs the rows that have a non-numeric value in any column specified.
 }
 \description{
-Data Formatter Function
+Will flag rows that are non-numeric and do not follow the data format that is expected of the column.
 }
 \examples{
-ADD EXAMPLES OF HOW TO APPLY YOUR FUNCTION
+data_formatter(body_weight, c("Body_Weight_1", "Body_Weight_2", "Body_Weight_3"))
 }

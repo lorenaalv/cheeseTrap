@@ -4,19 +4,21 @@
 \alias{join_comparison}
 \title{Join Comparison Function}
 \usage{
-join_comparison(data, x)
+join_comparison(df1, df2, join_by)
 }
 \arguments{
-\item{data}{ADD YOUR PARAMETERS HERE AND WHAT THEY SHOULD BE (requirements, data types, etc.)}
+\item{df1}{a data frame of data from timepoint 1}
 
-\item{x}{}
+\item{df2}{a data frame of data from timepoint 2}
+
+\item{join_by}{input of the variable that you would like to join observations by, most likely the ‘ID’ variable}
 }
 \value{
-ADD DESCRIPTION FOR WHAT YOUR FUNCTION RETURNS (what it is, data type, etc.)
+a gt() table that returns the observations that did not match in the data frame between timepoint 1 and timepoint 2
 }
 \description{
-Join Comparison Function
+Revises any rows that do not match based on their identifying number. Intended to flag any change of IDs by researchers.
 }
 \examples{
-ADD EXAMPLES OF HOW TO APPLY YOUR FUNCTION
+join_comparison(df1 = birth, df2 = body_weight, join_by = "ID")
 }

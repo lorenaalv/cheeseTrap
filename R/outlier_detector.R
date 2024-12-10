@@ -1,12 +1,14 @@
 #' Outlier Detector Function
 #'
+#' Will identify any numerical outliers in the data and flag them to the user. Outliers are +- 2.5 standard deviations from mean.
+#'
 #' @param data the dataset for the function to act on
 #' @param y_var the variable/column for the function to act on. should be quantitative, but the function handles this as well through coercion.
 #'
-#' @return the function will return an interactive plot where the user can identify on their own end any outliers. the function also returns
+#' @return the function will return an interactive plot where the user can identify on their own end any outliers. the function also returns a gt() table of the flagged outliers and a message on how they were calculated.
 #' @export
 #'
-#' @examples ADD EXAMPLES OF HOW TO APPLY YOUR FUNCTION
+#' @examples outlier_detector(data=body_weight, y_var="Body_Weight_1")
 
 outlier_detector <- function(data, y_var) {
   # confirming user inputted column exist
@@ -18,7 +20,7 @@ outlier_detector <- function(data, y_var) {
   data$Row_Number <- seq_len(nrow(data))
 
   # converting to ensure columns are numeric
-  data[[y_var]] <- as.numeric(data[[y_var]])
+  data[[y_var]] <- suppressWarnings(as.numeric(data[[y_var]]))
 
   if (sum(is.na(data[[y_var]])) > 0) {
     cat("Warning: One or more of the rows in the specified column contains a character.\n",
@@ -30,7 +32,9 @@ outlier_detector <- function(data, y_var) {
 
   # numerically calculate outliers for the y_var
   mean_y <- mean(data[[y_var]], na.rm = TRUE)
-  std_y <- sd(data[[y_var]], na.rm = TRUE)
+  n <- length(data[[y_var]])
+  variance <- sum((data[[y_var]] - mean_y)^2) / (n - 1)
+  std_y <- sqrt(variance)
 
   # outliers are +- 2.5 std from mean
   outliers <- data[abs(data[[y_var]] - mean_y) >= 2.5 * std_y, ]

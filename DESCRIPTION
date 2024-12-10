@@ -13,6 +13,7 @@ Imports:
     dplyr,
     ggplot2,
     gt,
+    knitr,
     plotly
 RoxygenNote: 7.3.2
 Depends: 
@@ -22,3 +23,8 @@ Authors@R: c(
     person("Vanessa", "Valverde", , "vanessa_valverde@college.harvard.edu", role = "cre"),
     person("Sarah", "Rojas", , "sarahrojas@college.harvard.edu", role = "cre")
   )
+Suggests: 
+    rmarkdown,
+    testthat (>= 3.0.0)
+VignetteBuilder: knitr
+Config/testthat/edition: 3

@@ -2,21 +2,23 @@
 % Please edit documentation in R/typo_flagger.R
 \name{typo_flagger}
 \alias{typo_flagger}
-\title{Typo Flagger Function}
+\title{Identify Treatment Misspelling Function}
 \usage{
-typo_flagger(data, x)
+typo_flagger(data, column, correct_inputs)
 }
 \arguments{
-\item{data}{ADD YOUR PARAMETERS HERE AND WHAT THEY SHOULD BE (requirements, data types, etc.)}
+\item{data}{the dataset for the function to act on}
 
-\item{x}{}
+\item{column}{the variable/column for the function to act on}
+
+\item{correct_inputs}{a vector of correct inputs for the column}
 }
 \value{
-ADD DESCRIPTION FOR WHAT YOUR FUNCTION RETURNS (what it is, data type, etc.)
+a gt() table that outputs the rows that have incorrect inputs in the specified column
 }
 \description{
-Typo Flagger Function
+Flags any observations of a categorical column that do not match the specified correct inputs. Observations may be misspelled or another input altogether that has not been updated.
 }
 \examples{
-ADD EXAMPLES OF HOW TO APPLY YOUR FUNCTION
+typo_flagger(data = birth, column = "Treatment", correct_inputs = c("Plac", "Tmt"))
 }

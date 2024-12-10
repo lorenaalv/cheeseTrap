@@ -1,16 +1,16 @@
 #' Outcome Data Set
 #'
-#' Includes details for the WATCH LECTURE AND UPDATE DOCUMENTATION.
+#' Includes details for the outcome of using either the Placebo or the Treatment on the mice, the data these check ins were done by the lab, and the identifier for each mouse.
 #'
 #' @format A tibble with 33 rows and 7 variables:
 #' \describe{
 #'   \item{Subject_ID}{ID corresponding to the mouse, with ID name also including the Sex and Number}
-#'   \item{Outcome 1}{WATCH LECTURE AND UPDATE DOCUMENTATION}
-#'   \item{Date Outcome 1}{WATCH LECTURE AND UPDATE DOCUMENTATION}
-#'   \item{Outcome 2}{WATCH LECTURE AND UPDATE DOCUMENTATION}
-#'   \item{Date Outcome 2}{WATCH LECTURE AND UPDATE DOCUMENTATION}
-#'   \item{Outcome 3}{WATCH LECTURE AND UPDATE DOCUMENTATION}
-#'   \item{Date Outcome 3}{WATCH LECTURE AND UPDATE DOCUMENTATION}
+#'   \item{Outcome 1}{outcome after first check of using Placebo or Treatment on mouse}
+#'   \item{Date Outcome 1}{date of the first check}
+#'   \item{Outcome 2}{outcome after second check of using Placebo or Treatment on mouse}
+#'   \item{Date Outcome 2}{date of the second check}
+#'   \item{Outcome 3}{outcome after third check of using Placebo or Treatment on mouse}
+#'   \item{Date Outcome 3}{date of the third check}
 #' }
 #' @source {James Xenakis Mouse Lab}
 "outcome"

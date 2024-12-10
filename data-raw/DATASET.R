@@ -44,4 +44,5 @@ outcome <- outcome |>
 usethis::use_data(outcome, overwrite = TRUE)
 
 # social dominance data set
-social_dominance <- read.csv("./data-raw/Reseachwords.csv")
+social_dominance <- read.csv("./data-raw/social_dominance.csv")
+usethis::use_data(social_dominance, overwrite = TRUE)
