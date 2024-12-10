@@ -93,9 +93,9 @@ knitr::include_graphics("~/cheeseTrap/hexSticker/hexSticker.png")
 ```
 
 
-# Welcome to CheeseTrap 🧀
+# Welcome to cheeseTrap 🧀
 
-In our package called "cheeseTrap" we created functions to acknowldge some typical user input errors. 
+In our package called "cheeseTrap" we created functions to acknowledge some typical user input errors. 
 
 
 ## Key Features of the Package
@@ -189,9 +189,17 @@ data_formatter(Body_WeightDF, c("Body_Weight_1", "Body_Weight_2", "Body_Weight_3
 
 ### 2) Join Comparison Function
 #### Purpose:
-Although there is not a visual example of this function here is a brief description:
+Here is a brief description:
 the join comparison function allows the user to compare 2 tables and see which do not have a match in order to detect any potential misspellings or in our case the wrong input of a Sex identification of a mouse.
 
+#### Example:
+Here are the inner-working of the function we created: join_comparison()
+
+```{r, results='asis'}
+# Example
+join_comparison(df1 = birth, df2 = body_weight, join_by = "ID")
+
+```
 
 ### 3) Outlier Detector Function
 
@@ -199,16 +207,47 @@ the join comparison function allows the user to compare 2 tables and see which d
 Although there is not a visual example of this function here is a brief description:
 The outlier detection function will identify outliers in the data. It takes in arguments for a data frame and a numerical column to check for potential outliers. Then, outlier_detector() will output a table of the flagged outliers, as well as a scatterplot of the data, giving users the freedom to explore solutions. It will also output a message of the general rule to calculate outliers.
 
+#### Example:
+Here are the inner-working of the function we created: outlier_detector()
+
+```{r, results='asis'}
+# Example
+outlier_detector(data=body_weight, y_var="Body_Weight_1")
+
+```
+
+
 ### 4) Typo Flagger Function
 
 #### Purpose:
 Although there is not a visual example of this function here is a brief description:
 This is a simple spelling check function. It allows the user to input what the correct spelling of inputs is, therefore it will scan the column and output any observations that do not meet the spelling criteria.
 
+#### Example:
+Here are the inner-working of the function we created: outlier_detector()
+
+```{r, results='asis'}
+# Example
+typo_flagger(data = birth, column = "Treatment", correct_inputs = c("Plac", "Tmt"))
+
+```
+
+
 ### 5) Set Range Function
 
 #### Purpose:
 Although there is not a visual example of this function here is a brief description:
 This function was created inspired by the group's unique data frame portion of the project. Because there are many questions in this survey that allowed for a free response, errors were frequent. One in particular was a question of how many days participants worked out, which was accidentally interpreted as how often participants worked out. This led to some responses exceeding the 7 maximum response (7 days in a week). This function allows the user to select a data frame, column, and max and min range. Then, it will print a message and table displaying which observations are outside of the specified range. 
+
+
+#### Example:
+Here are the inner-working of the function we created: outlier_detector()
+
+```{r, results='asis'}
+# Example
+set_range(data = social_dominance, column_name = "Q2", min_value = 1, max_value = 4)
+
+```
+
 
 ---
