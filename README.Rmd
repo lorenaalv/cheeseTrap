@@ -21,7 +21,7 @@ The goal of cheeseTrap is to effectively flag potential data issues within labs'
 
 You can install the development version of cheeseTrap like so:
 
-```{r}
+```{r eval=FALSE}
 # run the following once
 install.packages("devtools")
 
