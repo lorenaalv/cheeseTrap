@@ -19,14 +19,68 @@ if someone’s physical fitness dictates their social dominance.
 You can install the development version of cheeseTrap like so:
 
 ``` r
-install.packages("cheeseTrap")
-#> Installing package into 'C:/Users/alvlo/AppData/Local/Temp/Rtmp0M7RJc/temp_libpath7b2c250635b5'
+# run the following once
+install.packages("devtools")
+#> Installing package into 'C:/Users/alvlo/AppData/Local/Temp/RtmpyowWqz/temp_libpath4bf4142c2128'
 #> (as 'lib' is unspecified)
-#> Warning: package 'cheeseTrap' is not available for this version of R
+#> package 'devtools' successfully unpacked and MD5 sums checked
 #> 
-#> A version of this package for your version of R might be available elsewhere,
-#> see the ideas at
-#> https://cran.r-project.org/doc/manuals/r-patched/R-admin.html#Installing-packages
+#> The downloaded binary packages are in
+#>  C:\Users\alvlo\AppData\Local\Temp\RtmpYpZrza\downloaded_packages
+
+# then install the package
+devtools::install_github("lorenaalv/cheeseTrap")
+#> Using github PAT from envvar GITHUB_PAT. Use `gitcreds::gitcreds_set()` and unset GITHUB_PAT in .Renviron (or elsewhere) if you want to use the more secure git credential store instead.
+#> Downloading GitHub repo lorenaalv/cheeseTrap@HEAD
+#> Rcpp        (1.0.13 -> 1.0.13-1) [CRAN]
+#> later       (1.3.2  -> 1.4.1   ) [CRAN]
+#> fs          (1.6.4  -> 1.6.5   ) [CRAN]
+#> tinytex     (0.53   -> 0.54    ) [CRAN]
+#> fontawesome (0.5.2  -> 0.5.3   ) [CRAN]
+#> xfun        (0.47   -> 0.49    ) [CRAN]
+#> evaluate    (1.0.0  -> 1.0.1   ) [CRAN]
+#> rmarkdown   (2.28   -> 2.29    ) [CRAN]
+#> knitr       (1.48   -> 1.49    ) [CRAN]
+#> sys         (3.4.2  -> 3.4.3   ) [CRAN]
+#> askpass     (1.2.0  -> 1.2.1   ) [CRAN]
+#> curl        (5.2.3  -> 6.0.1   ) [CRAN]
+#> gtable      (0.3.5  -> 0.3.6   ) [CRAN]
+#> promises    (1.3.0  -> 1.3.2   ) [CRAN]
+#> data.table  (1.16.0 -> 1.16.4  ) [CRAN]
+#> bitops      (1.0-8  -> 1.0-9   ) [CRAN]
+#> Installing 16 packages: Rcpp, later, fs, tinytex, fontawesome, xfun, evaluate, rmarkdown, knitr, sys, askpass, curl, gtable, promises, data.table, bitops
+#> Installing packages into 'C:/Users/alvlo/AppData/Local/Temp/RtmpyowWqz/temp_libpath4bf4142c2128'
+#> (as 'lib' is unspecified)
+#> package 'Rcpp' successfully unpacked and MD5 sums checked
+#> package 'later' successfully unpacked and MD5 sums checked
+#> package 'fs' successfully unpacked and MD5 sums checked
+#> package 'tinytex' successfully unpacked and MD5 sums checked
+#> package 'fontawesome' successfully unpacked and MD5 sums checked
+#> package 'xfun' successfully unpacked and MD5 sums checked
+#> package 'evaluate' successfully unpacked and MD5 sums checked
+#> package 'rmarkdown' successfully unpacked and MD5 sums checked
+#> package 'knitr' successfully unpacked and MD5 sums checked
+#> package 'sys' successfully unpacked and MD5 sums checked
+#> package 'askpass' successfully unpacked and MD5 sums checked
+#> package 'curl' successfully unpacked and MD5 sums checked
+#> package 'gtable' successfully unpacked and MD5 sums checked
+#> package 'promises' successfully unpacked and MD5 sums checked
+#> package 'data.table' successfully unpacked and MD5 sums checked
+#> package 'bitops' successfully unpacked and MD5 sums checked
+#> 
+#> The downloaded binary packages are in
+#>  C:\Users\alvlo\AppData\Local\Temp\RtmpYpZrza\downloaded_packages
+#> ── R CMD build ─────────────────────────────────────────────────────────────────
+#>          checking for file 'C:\Users\alvlo\AppData\Local\Temp\RtmpYpZrza\remotes50e85de162a\lorenaalv-cheeseTrap-2800e8f/DESCRIPTION' ...  ✔  checking for file 'C:\Users\alvlo\AppData\Local\Temp\RtmpYpZrza\remotes50e85de162a\lorenaalv-cheeseTrap-2800e8f/DESCRIPTION' (553ms)
+#>       ─  preparing 'cheeseTrap': (924ms)
+#>    checking DESCRIPTION meta-information ...     checking DESCRIPTION meta-information ...   ✔  checking DESCRIPTION meta-information
+#>       ─  checking for LF line-endings in source and make files and shell scripts (548ms)
+#>       ─  checking for empty or unneeded directories
+#>       ─  building 'cheeseTrap_0.1.0.tar.gz'
+#>      
+#> 
+#> Installing package into 'C:/Users/alvlo/AppData/Local/Temp/RtmpyowWqz/temp_libpath4bf4142c2128'
+#> (as 'lib' is unspecified)
 ```
 
 To access the cheeseTrap package in an R Studio environment, load the

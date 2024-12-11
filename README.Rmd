@@ -22,7 +22,11 @@ The goal of cheeseTrap is to effectively flag potential data issues within labs'
 You can install the development version of cheeseTrap like so:
 
 ```{r}
-install.packages("cheeseTrap")
+# run the following once
+install.packages("devtools")
+
+# then install the package
+devtools::install_github("lorenaalv/cheeseTrap")
 ```
 To access the cheeseTrap package in an R Studio environment, load the package by simply running the following code chunk:
 
